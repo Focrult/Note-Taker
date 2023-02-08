@@ -16,3 +16,17 @@ app.get('/', (req, res) => {
 app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, "public/notes.html"));
 });
+
+//db notes
+app.get('/api/notes', (req, res) => {
+    fs.readFile(path.join(__dirname, "./db/db.json"), (err, data) => {
+        if (err) return res.status(500).send(err);
+
+        try {
+            const savedNotes = JSON.parse(data);
+            return res.json(savedNotes);
+        } catch (err) {
+            return res.status(500).send(err);
+        }
+    });
+});
