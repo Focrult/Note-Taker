@@ -23,7 +23,7 @@ As stated within the project description, the usage for this application is to e
 
 
 # Links
-Link to deployed application on heroku: https://shrouded-fortress-87825.herokuapp.com/notes
+Link to deployed application on heroku: https://shrouded-fortress-87825.herokuapp.com/
 
 Screenshots:
 ![Screenshot 2023-02-09 235018](https://user-images.githubusercontent.com/114898970/217866136-50add071-eb05-4d93-96fa-d4711fa9c0d0.png)
