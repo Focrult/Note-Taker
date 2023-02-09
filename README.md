@@ -1,9 +1,9 @@
-## Team-Profile-Generator
-# Challenge #10 - Week 10:
+## Note-Taker
+# Challenge #11 - Week 11:
 
 # Project Description
 ### What is this project?
-For an individual who is a small business owner, this application enabled its user to write and save notes quickly! This enables the user to organise themselves and keep track of tasks throughout the day.
+For an individual who is a small business owner, this application which takes advantage of NodeJS and Express, enables its user to write and save notes quickly! Allowing the user to organise themselves and keep track of tasks throughout the day.
 
 
 ### Files modified
