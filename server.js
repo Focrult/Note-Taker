@@ -26,14 +26,14 @@ app.get('/notes', (req, res) => {
 });
 //db notes
 app.get('/api/notes', (req, res) => {
-  fs.readFile(path.join(__dirname, "./db/db.json"), (err, data) => {
+  fs.readFile(path.join(__dirname, "/db/db.json"), (err, data) => {
     if (err) {
       // Return a 500 status code and send the error message in the response if an error occurs while reading the file
       return res.status(500).send(err);
     }
-
     try {
       const savedNotes = JSON.parse(data);
+      console.log("Verify1 " +savedNotes);
       return res.json(savedNotes);
     } catch (err) {
       // Return a 500 status code and send the error message in the response if an error occurs while parsing the file contents
@@ -47,21 +47,13 @@ app.get('*', (req, res) => {
 })
 //use POST method
 app.post('/api/notes', (req, res) => {
-    fs.readFile(path.join(__dirname, "/db/db.json"), (err, data) => {
-        if (err) return res.status(500).send(err);
+    let newNote = req.body;
+    let notesArray = require("./db/db.json");
+    newNote.id = notesArray.length + 1;
+    notesArray.push(newNote);
 
-        try {
-            const savedNotes = JSON.parse(data);
-            const newNote = { id: savedNotes.length + 1, title: req.body[0].title, text: req.body[0].text };
-            savedNotes.push(newNote);
-            fs.writeFile(path.join(__dirname, "/db/db.json"), JSON.stringify(savedNotes), (err) => {
-                if (err) {
-                    return res.status(500).json({ error: "Error saving data to file." });
-                }
-                return res.json({ message: "Note saved successfully" });
-            });
-        } catch (err) {
-            return res.status(500).send(err);
-        }
+    fs.writeFileSync("./db/db.json", JSON.stringify(notesArray));
+    res.json({
+        message: "success"
     });
 });
